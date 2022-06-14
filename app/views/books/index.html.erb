@@ -3,10 +3,18 @@
   <div id="notice">
     <%= notice %>
   <div class="container">
+    <% if @book.errors.any? %>
+    <%= @book.errors.count %>errors prohibited this obj from being saved:
+      <ul>
+        <% @book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
     <div class="row">
       <div class="col-md-3">
         <h2>User info</h2>
-        <img src="https://bookers-level2.herokuapp.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGJKIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2472db111c8fe8d5bb6169cf23b63a07311df526/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVdscGFRPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--4a929dbc7794f3c4610ba9ba5402762ad9cd1a14/default-image.jpg">
+        <%= image_tag @user.get_profile_image(100,100) %>
         <table class="table">
           <tbody>
           <tr>
